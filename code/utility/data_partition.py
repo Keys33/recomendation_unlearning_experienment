@@ -1,4 +1,5 @@
 from utility.parser import parse_args
+
 import pickle
 import copy
 import random
@@ -13,14 +14,22 @@ def E_score1(a,b):
 def E_score2(a,b):
     return np.sum(np.power(a-b, 2))
 
+class StrToBytes:
+    def __init__(self, fileobj):
+        self.fileobj = fileobj
+    def read(self, size):
+        return self.fileobj.read(size).encode()
+    def readline(self, size=-1):
+        return self.fileobj.readline(size).encode()
 
 # Interaction-based Balanced Partition
 def data_partition_1(train_items,k,T):
 
-    with open(args.data_path + args.dataset + '/user_pretrain.pk', 'r') as f:
-        uidW = pickle.load(f)
-    with open(args.data_path + args.dataset + '/item_pretrain.pk', 'r') as f:
-        iidW = pickle.load(f)
+    with open(args.data_path + args.dataset + '/user_pretrain.pk', 'rb') as f:
+        print(args.data_path + args.dataset + '/user_pretrain.pk')
+        uidW = pickle.load(StrToBytes(f))
+    with open(args.data_path + args.dataset + '/item_pretrain.pk', 'rb') as f:
+        iidW = pickle.load(StrToBytes(f))
 
     # get_data_interactions_1
     data = []
@@ -92,9 +101,9 @@ def data_partition_1(train_items,k,T):
 
         centroembs = centroembs_next
         for i in range(k):
-            print C_num[i]
+            print(C_num[i])
 
-        print _, loss
+        print(_, loss)
 
     users = [[] for i in range(k)]
     items = [[] for i in range(k)]
@@ -160,14 +169,14 @@ def data_partition_2(train_items,k,T):
         loss = 0.0
 
         for i in range(k):
-            print len(C[i])
+            print(len(C[i]))
 
         for i in range(k):
             score_u = E_score2(centroembs_next[i],centroembs[i])
             loss += score_u
 
         centroembs = centroembs_next
-        print _, loss
+        print(_, loss)
 
     users = [[] for i in range(k)]
     items = [[] for i in range(k)]

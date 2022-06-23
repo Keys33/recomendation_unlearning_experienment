@@ -1,0 +1,102 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 13 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: ./code/RecEraser_LightGCN.py
+--------------------------------------------------------------------------------
+./code/RecEraser_LightGCN.py:70:25: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:71:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:72:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:74:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:75:33: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:76:33: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:131:25: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:132:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:133:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:194:25: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:195:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:196:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+./code/RecEraser_LightGCN.py:421:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file './code/RecEraser_LightGCN.py'
+ outputting to './code/RecEraser_LightGCN.py'
+--------------------------------------------------------------------------------
+
+34:21: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+35:25: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+36:25: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+38:33: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+41:28: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+42:28: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+70:25: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+70:25: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+71:29: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+71:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+72:29: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+72:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+74:29: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+74:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+75:33: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+75:33: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+76:33: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+76:33: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+92:14: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+103:21: INFO: Renamed 'tf.div' to 'tf.compat.v1.div'
+103:36: INFO: Added keywords to args of function 'tf.reduce_sum'
+103:36: INFO: Renamed keyword argument for tf.reduce_sum from keep_dims to keepdims
+110:21: INFO: Renamed 'tf.div' to 'tf.compat.v1.div'
+110:36: INFO: Added keywords to args of function 'tf.reduce_sum'
+110:36: INFO: Renamed keyword argument for tf.reduce_sum from keep_dims to keepdims
+112:18: INFO: Added keywords to args of function 'tf.reduce_sum'
+124:24: INFO: Added keywords to args of function 'tf.transpose'
+125:24: INFO: Added keywords to args of function 'tf.transpose'
+131:25: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+131:25: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+132:29: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+132:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+133:29: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+133:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+143:19: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+151:14: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+169:34: INFO: Renamed 'tf.sparse_tensor_dense_matmul' to 'tf.sparse.sparse_dense_matmul'
+175:25: INFO: Added keywords to args of function 'tf.reduce_mean'
+194:25: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+194:25: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+195:29: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+195:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+196:29: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+196:29: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+198:17: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+206:14: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+213:22: INFO: tf.random_normal_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+213:22: INFO: Renamed 'tf.random_normal_initializer' to 'tf.compat.v1.random_normal_initializer'
+222:12: INFO: Renamed 'tf.truncated_normal' to 'tf.random.truncated_normal'
+223:16: INFO: Renamed 'tf.div' to 'tf.compat.v1.div'
+229:12: INFO: Renamed 'tf.truncated_normal' to 'tf.random.truncated_normal'
+230:16: INFO: Renamed 'tf.div' to 'tf.compat.v1.div'
+287:34: INFO: Renamed 'tf.sparse_tensor_dense_matmul' to 'tf.sparse.sparse_dense_matmul'
+293:25: INFO: Added keywords to args of function 'tf.reduce_mean'
+298:21: INFO: Added keywords to args of function 'tf.reduce_sum'
+299:21: INFO: Added keywords to args of function 'tf.reduce_sum'
+301:18: INFO: Added keywords to args of function 'tf.reduce_mean'
+317:25: INFO: Renamed 'tf.random_uniform' to 'tf.random.uniform'
+319:18: INFO: Renamed 'tf.sparse_retain' to 'tf.sparse.retain'
+321:25: INFO: Renamed 'tf.div' to 'tf.compat.v1.div'
+342:12: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+350:21: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+352:13: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+354:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+365:21: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+370:17: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+421:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+

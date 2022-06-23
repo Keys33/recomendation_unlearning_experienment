@@ -5,8 +5,10 @@ Wang Xiang et al. Neural Graph Collaborative Filtering. In SIGIR 2019.
 
 @author: Xiang Wang (xiangwang@u.nus.edu)
 '''
+#from parser import *
 from utility.parser import parse_args
 from utility.load_data import *
+# from evaluate_foldout import eval_score_matrix_foldout
 from evaluator import eval_score_matrix_foldout
 import multiprocessing
 import heapq

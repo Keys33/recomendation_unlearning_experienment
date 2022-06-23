@@ -17,6 +17,15 @@ def ensureDir(dir_path):
     d = os.path.dirname(dir_path)
     if not os.path.exists(d):
         os.makedirs(d)
+
+class StrToBytes:
+    def __init__(self, fileobj):
+        self.fileobj = fileobj
+    def read(self, size):
+        return self.fileobj.read(size).encode()
+    def readline(self, size=-1):
+        return self.fileobj.readline(size).encode()
+
 class Data(object):
     def __init__(self, path, batch_size,part_type,part_num,part_T):
         self.path = path
@@ -85,11 +94,11 @@ class Data(object):
         if self.part_type != 0:
             try:
                 with open(self.path + '/C_type-' +str(part_type)+'_num-'+ str(part_num)+'.pk', 'r') as f:
-                    self.C = pickle.load(f)
+                    self.C = pickle.load(StrToBytes(f))
                 with open(self.path + '/C_U_type-' +str(part_type)+'_num-'+ str(part_num)+'.pk', 'r') as f:
-                    self.C_U = pickle.load(f)
+                    self.C_U = pickle.load(StrToBytes(f))
                 with open(self.path + '/C_I_type-' +str(part_type)+'_num-'+ str(part_num)+'.pk', 'r') as f:
-                    self.C_I = pickle.load(f)
+                    self.C_I = pickle.load(StrToBytes(f))
             except Exception:
                 if part_type==1:
                     self.C, self.C_U,self.C_I = data_partition_1(self.train_items,part_num,part_T)
@@ -355,7 +364,7 @@ class Data(object):
         print('n_train=%d, n_test=%d, sparsity=%.5f' % (self.n_train, self.n_test, (self.n_train + self.n_test)/(self.n_users * self.n_items)))
         if self.part_type != 0:
             print('training nums of each local data:')
-            print self.n_C
+            print(self.n_C)
 
 
     def get_sparsity_split(self):

@@ -1,12 +1,16 @@
 import os
 import sys
 import threading
+from time import time
+
 import tensorflow as tf
 from tensorflow.python.client import device_lib
 from utility.helper import *
+#import utility.helper 
 from utility.batch_test import *
+#import utility.batch_test
 
-
+tf.compat.v1.disable_eager_execution()
 class LightGCN(object):
     def __init__(self, data_config):
         # argument settings
@@ -31,13 +35,13 @@ class LightGCN(object):
         self.Ks = eval(args.Ks)
 
         # placeholder definition
-        self.users = tf.placeholder(tf.int32, shape=(None,))
-        self.pos_items = tf.placeholder(tf.int32, shape=(None,))
-        self.neg_items = tf.placeholder(tf.int32, shape=(None,))
+        self.users = tf.compat.v1.placeholder(tf.int32, shape=(None,))
+        self.pos_items = tf.compat.v1.placeholder(tf.int32, shape=(None,))
+        self.neg_items = tf.compat.v1.placeholder(tf.int32, shape=(None,))
 
         self.node_dropout_flag = args.node_dropout_flag
-        self.node_dropout = tf.placeholder(tf.float32, shape=[None])
-        self.mess_dropout = tf.placeholder(tf.float32, shape=[None])
+        self.node_dropout = tf.compat.v1.placeholder(tf.float32, shape=[None])
+        self.mess_dropout = tf.compat.v1.placeholder(tf.float32, shape=[None])
 
         # initialization of model parameters
         self.weights = self._init_weights()
@@ -72,7 +76,7 @@ class LightGCN(object):
         self.loss = self.mf_loss + self.emb_loss
 
         #self.opt = tf.train.AdamOptimizer(learning_rate=self.lr).minimize(self.loss)
-        self.opt = tf.train.AdamOptimizer(learning_rate=self.lr).minimize(self.loss)
+        self.opt = tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr).minimize(self.loss)
 
     def create_model_str(self):
         log_dir = '/' + self.alg_type + '/layers_' + str(self.n_layers) + '/dim_' + str(self.emb_dim)
@@ -152,7 +156,7 @@ class LightGCN(object):
 
             temp_embed = []
             for f in range(self.n_fold):
-                temp_embed.append(tf.sparse_tensor_dense_matmul(A_fold_hat[f], ego_embeddings))
+                temp_embed.append(tf.compat.v1.sparse_tensor_dense_matmul(A_fold_hat[f], ego_embeddings))
 
             side_embeddings = tf.concat(temp_embed, 0)
             ego_embeddings = side_embeddings
@@ -207,11 +211,11 @@ if __name__ == '__main__':
 
     model = LightGCN(data_config=config)
 
-    config = tf.ConfigProto()
+    config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth = True
-    sess = tf.Session(config=config)
+    sess = tf.compat.v1.Session(config=config)
 
-    sess.run(tf.global_variables_initializer())
+    sess.run(tf.compat.v1.global_variables_initializer())
     cur_best_pre_0 = 0.
     loss_loger, pre_loger, rec_loger, ndcg_loger, hit_loger = [], [], [], [], []
     stopping_step = 0
